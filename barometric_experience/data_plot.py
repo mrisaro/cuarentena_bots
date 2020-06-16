@@ -9,7 +9,7 @@ file = 'data.csv'
 df = pd.read_csv(file)
 df2= pd.read_csv('presion.csv')
 
-x = (10-df.I.values)*0.17*16
+x = (10-df.I.values)*0.167*16
 y = df.P.values
 dy = df.dP.values
 
@@ -25,7 +25,8 @@ for jj in range(11):
     sZ[ind] = np.std(z[ind])
 
 
-p = np.polyfit(x, y, 1)
+p,cov = np.polyfit(x, y, 1, cov=True)
+g = 1.225/p[0]
 x_fit = np.linspace(0,30,100)
 y_fit = np.polyval(p,x_fit)
 
@@ -39,8 +40,7 @@ ax.legend(fontsize=16)
 ax.tick_params(labelsize=16)
 ax.grid(linestyle='--')
 fig.tight_layout()
-
-plt.savefig('data_experimento.png')
+#plt.savefig('data_experimento.png')
 
 fig = plt.figure(2,figsize=(10,6))
 ax = fig.add_subplot(111)
@@ -53,5 +53,4 @@ ax.legend(fontsize=16)
 ax.tick_params(labelsize=16)
 ax.grid(linestyle='--')
 fig.tight_layout()
-
 plt.savefig('data_individual.png')
