@@ -40,7 +40,7 @@ ax.legend(fontsize=16)
 ax.tick_params(labelsize=16)
 ax.grid(linestyle='--')
 fig.tight_layout()
-#plt.savefig('data_experimento.png')
+plt.savefig('data_experimento.png')
 
 fig = plt.figure(2,figsize=(10,6))
 ax = fig.add_subplot(111)
